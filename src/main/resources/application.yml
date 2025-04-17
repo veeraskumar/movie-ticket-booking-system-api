@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: movie-ticket-booking-system-api
+  datasource:
+    url: jdbc:mysql://localhost:3306/study
+    username: root
+    password: root@123
+  jpa:
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+  mail:
+    host: smtp.example.com
+    port: 587
+    username: veerasrvk@gmail.com
+    password: mjsvvyfoqqnpwnxq
+    protocol: smtp
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
