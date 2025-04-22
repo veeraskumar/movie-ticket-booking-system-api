@@ -1,5 +1,6 @@
 package com.rvk.movie_ticket_booking_system_api.controller;
 
+import com.rvk.movie_ticket_booking_system_api.dto.UserRegistrationDto;
 import com.rvk.movie_ticket_booking_system_api.entity.UserDetails;
 import com.rvk.movie_ticket_booking_system_api.service.UserService;
 import com.rvk.movie_ticket_booking_system_api.utility.BuilderResponseStructure;
@@ -19,8 +20,8 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/register")
-    public ResponseEntity<ResponseStructure<UserDetails>> registerUser(@RequestBody UserDetails userDetails) {
+    public ResponseEntity<ResponseStructure<UserDetails>> registerUser(@RequestBody UserRegistrationDto userRegistrationDto) {
         return BuilderResponseStructure
-                .success(HttpStatus.CREATED, "Register is successfully added !", userService.registerUser(userDetails));
+                .success(HttpStatus.CREATED, "Register is successfully added !", userService.registerUser(userRegistrationDto));
     }
 }
