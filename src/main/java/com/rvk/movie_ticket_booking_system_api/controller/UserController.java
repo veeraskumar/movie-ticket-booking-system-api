@@ -1,7 +1,9 @@
 package com.rvk.movie_ticket_booking_system_api.controller;
 
 import com.rvk.movie_ticket_booking_system_api.dto.UserRegistrationDto;
+import com.rvk.movie_ticket_booking_system_api.dto.UserResponseDto;
 import com.rvk.movie_ticket_booking_system_api.entity.UserDetails;
+import com.rvk.movie_ticket_booking_system_api.mapping.UserRegistrationMapping;
 import com.rvk.movie_ticket_booking_system_api.service.UserService;
 import com.rvk.movie_ticket_booking_system_api.utility.BuilderResponseStructure;
 import com.rvk.movie_ticket_booking_system_api.utility.ResponseStructure;
@@ -18,10 +20,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/booking-shows")
 public class UserController {
     private final UserService userService;
+    private final UserRegistrationMapping userRegistrationMapping;
 
     @PostMapping("/register")
-    public ResponseEntity<ResponseStructure<UserDetails>> registerUser(@RequestBody UserRegistrationDto userRegistrationDto) {
+    public ResponseEntity<ResponseStructure<UserResponseDto>> registerUser(@RequestBody UserRegistrationDto userRegistrationDto) {
         return BuilderResponseStructure
-                .success(HttpStatus.CREATED, "Register is successfully added !", userService.registerUser(userRegistrationDto));
+                .success(HttpStatus.CREATED, "Register is successfully added !",
+                        userRegistrationMapping.responseDto(userService.registerUser(userRegistrationDto)));
     }
 }

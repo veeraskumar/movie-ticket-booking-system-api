@@ -18,7 +18,7 @@ import java.time.LocalDate;
 public class UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String userid;
+    private String userId;
     private String userName;
     @Column(unique = true)
     private String email;
