@@ -27,7 +27,7 @@ public class UserDetails {
     private String password;
     @Enumerated(EnumType.STRING)
     private Role userRole;
-    private LocalDate dataOfBirth;
+    private LocalDate dateOfBirth;
     private long createAt;
     private long updateAt;
 }
