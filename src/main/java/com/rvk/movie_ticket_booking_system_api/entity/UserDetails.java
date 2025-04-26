@@ -28,6 +28,6 @@ public class UserDetails {
     @Enumerated(EnumType.STRING)
     private Role userRole;
     private LocalDate dateOfBirth;
-    private long createAt;
-    private long updateAt;
+    private Long createAt;
+    private Long updateAt;
 }
