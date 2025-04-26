@@ -2,11 +2,8 @@ package com.rvk.movie_ticket_booking_system_api.controller;
 
 import com.rvk.movie_ticket_booking_system_api.dto.TheaterInput;
 import com.rvk.movie_ticket_booking_system_api.dto.TheaterOutput;
-import com.rvk.movie_ticket_booking_system_api.dto.UserRegistrationDto;
-import com.rvk.movie_ticket_booking_system_api.dto.UserResponseDto;
-import com.rvk.movie_ticket_booking_system_api.entity.Theater;
 import com.rvk.movie_ticket_booking_system_api.mapping.RegistrationMapping;
-import com.rvk.movie_ticket_booking_system_api.service.UserService;
+import com.rvk.movie_ticket_booking_system_api.service.TheaterService;
 import com.rvk.movie_ticket_booking_system_api.utility.BuilderResponseStructure;
 import com.rvk.movie_ticket_booking_system_api.utility.ResponseStructure;
 import lombok.AllArgsConstructor;
@@ -18,14 +15,15 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/booking-shows")
-public class UserController {
-    private final UserService userService;
+public class TheaterController {
+
+    private final TheaterService theaterService;
     private final RegistrationMapping registrationMapping;
 
-    @PostMapping("/register-user")
-    public ResponseEntity<ResponseStructure<UserResponseDto>> registerUser(@RequestBody @Validated UserRegistrationDto userRegistrationDto) {
-        return BuilderResponseStructure
-                .success(HttpStatus.CREATED, "Register is successfully added !",
-                        registrationMapping.responseDto(userService.registerUser(userRegistrationDto)));
+    @PostMapping("/register-Theater")
+    public ResponseEntity<ResponseStructure<TheaterOutput>> registerTheater(@RequestBody @Validated TheaterInput theaterInput, @RequestParam String email) {
+        return BuilderResponseStructure.success(HttpStatus.CREATED, "Register Theater Object",
+                registrationMapping.responseTheaterDto(theaterService.registerTheater(theaterInput, email)));
     }
+
 }
